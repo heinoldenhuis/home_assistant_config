@@ -1,0 +1,39 @@
+sensor.omnik_status:
+  friendly_name: Inverter Status
+  icon: mdi:solar-power
+sensor.omnik_actual_power:
+  friendly_name: Huidige opgewekt vermogen
+  icon: mdi:weather-sunny
+sensor.omnik_energy_today:
+  friendly_name: Vandaag opgewekt vermogen
+  icon: mdi:flash-outline
+sensor.omnik_energy_total:
+  friendly_name: Totaal opgewekt vermogen
+  icon: mdi:flash-outline
+sensor.omnik_hours_total:
+  friendly_name: Uren Operationeel
+  icon: mdi:timer
+sensor.omnik_inverter_serial_number:
+  friendly_name: Inverter Serienummer
+  icon: mdi:information-outline
+sensor.omnik_temperature:
+  friendly_name: Temperatuur
+  icon: mdi:mdi:thermometer
+sensor.omnik_dc_input_voltage:
+  friendly_name: DC Ingangsspanning
+  icon: mdi:mdi:flash-outline
+sensor.omnik_dc_input_current:
+  friendly_name: DC Ingangsstroom
+  icon: mdi:mdi:flash-outline
+sensor.omnik_ac_output_voltage:
+  friendly_name: AC Uitgangsspanning
+  icon: mdi:mdi:flash-outline
+sensor.omnik_ac_output_current:
+  friendly_name: AC Uitgangsstroom
+  icon: mdi:mdi:flash-outline
+sensor.omnik_ac_output_frequency:
+  friendly_name: AC Uitgangsfrequentie
+  icon: mdi:mdi:flash-outline
+sensor.omnik_ac_output_power:
+  friendly_name: AC Uitgangsvermogen
+  icon: mdi:mdi:flash-outline

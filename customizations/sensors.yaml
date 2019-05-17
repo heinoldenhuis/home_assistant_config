@@ -1,0 +1,72 @@
+sensor.cpu_temperature:
+  friendly_name: CPU Temperatuur
+  icon: mdi:thermometer
+climate.living_room:
+  friendly_name: Woonkamer Temperatuur
+  icon: mdi:thermometer
+sensor.living_room_thermostat_humidity:
+  friendly_name: Woonkamer Vochtigheid
+  icon: mdi:water-percent
+sensor.log_db_file_size:
+  friendly_name: Home Assistant Log Db
+  icon: mdi:database
+sensor.ssl_certificate_expiry:
+  friendly_name: SSL Certificaat Geldigheid
+  icon: mdi:security
+sensor.temperature:
+  friendly_name: Temperatuur Schuur
+  icon: mdi:thermometer
+sensor.humidity:
+  friendly_name: Vochtigheid Schuur
+  icon: mdi:water-percent
+sensor.bedroom_temperature:
+  friendly_name: Temperatuur Slaapkamer
+  icon: mdi:thermometer
+sensor.bedroom_humidity:
+  friendly_name: Vochtigheid Slaapkamer
+  icon: mdi:water-percent
+
+# Smart meter
+sensor.power_consumption:
+  friendly_name: Stroom consumptie
+  icon: mdi:flash-outline
+sensor.power_consumption_low:
+  friendly_name: Stroom consumptie (Dal)
+  icon: mdi:flash-outline
+sensor.power_consumption_normal:
+  friendly_name: Stroom consumptie (Piek)
+  icon: mdi:flash-outline
+sensor.power_production:
+  friendly_name: Stroom productie
+  icon: mdi:flash-outline
+sensor.power_production_low:
+  friendly_name: Stroom productie (Dal)
+  icon: mdi:flash-outline
+sensor.power_production_normal:
+  friendly_name: Stroom productie (Piek)
+  icon: mdi:flash-outline
+sensor.power_tariff:
+  friendly_name: Piek/Dal
+  icon: mdi:flash-outline
+sensor.power_tariff_view:
+  friendly_name: Stroom tarief
+  icon: mdi:flash-outline
+sensor.gas_consumption:
+  friendly_name: Gas consumptie
+  icon: mdi:fire
+sensor.hourly_gas_consumption:
+  friendly_name: Gas consumptie (per uur)
+  icon: mdi:fire
+
+# Power consumption and production sensors
+sensor.solar_power:
+  icon: mdi:white-balance-sunny
+sensor.grid_power_consumption:
+  icon: mdi:flash
+sensor.grid_power_production:
+  icon: mdi:flash
+
+sensor.custom_card_tracker:
+  friendly_name: Aangepaste Kaarten
+sensor.custom_component_tracker:
+  friendly_name: Aangepaste Componenten

@@ -1,0 +1,18 @@
+- name: Sfeervol
+  entities:
+    switch.fibaro_livingroom_back_switch: true
+    switch.fibaro_livingroom_front_switch: false
+    switch.livingroom_cabinet: true
+    switch.livingroom_window: true
+- name: Volledig
+  entities:
+    switch.fibaro_livingroom_back_switch: true
+    switch.fibaro_livingroom_front_switch: true
+    switch.livingroom_cabinet: false
+    switch.livingroom_window: false
+- name: Allemaal uit
+  entities:
+    switch.fibaro_livingroom_back_switch: false
+    switch.fibaro_livingroom_front_switch: false
+    switch.livingroom_cabinet: false
+    switch.livingroom_window: false

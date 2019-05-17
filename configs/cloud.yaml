@@ -1,0 +1,51 @@
+# Google Assistant integration for the Home Assistant Cloud to integrate the local Home Assistant entities.
+google_actions:
+  filter:
+    include_entities:
+      - climate.living_room
+      - switch.fibaro_livingroom_back_switch
+      - switch.fibaro_livingroom_front_switch
+      - switch.livingroom_cabinet
+      - switch.livingroom_window
+    include_domains:
+      - climate
+      - group
+      - light
+      - media_player
+      - scene
+      - switch
+  entity_config:
+    switch.fibaro_livingroom_back_switch:
+      name: Lamp achter
+      aliases:
+        - lamp achter
+      room: Woonkamer
+    switch.fibaro_livingroom_front_switch:
+      name: Lamp voor
+      aliases:
+        - lamp voor
+      room: Woonkamer
+    switch.livingroom_cabinet:
+      name: Lamp kast
+      aliases:
+        - lamp kast
+      room: Woonkamer
+    switch.livingroom_window:
+      name: Lamp raam
+      aliases:
+        - lamp raam
+      room: Woonkamer
+    climate.living_room:
+      name: Klimaat
+      aliases:
+        - temperatuur
+      room: Woonkamer
+    scene.allemaal_uit:
+      name: Allemaal uit
+      room: Woonkamer
+    scene.sfeervol:
+      name: Sfeervol
+      room: Woonkamer
+    scene.volledig:
+      name: Volledig
+      room: Woonkamer

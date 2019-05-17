@@ -1,0 +1,42 @@
+# Zwave switches
+switch.fibaro_carport_spots_switch:
+  friendly_name: Spots Carport (Buiten)
+  icon: mdi:spotlight-beam
+switch.fibaro_corridor_light_switch:
+  friendly_name: Lamp Overloop (Boven)
+  icon: mdi:lightbulb
+switch.fibaro_garage_light_back_switch:
+  friendly_name: Lamp Garage (Achter)
+  icon: mdi:lightbulb
+switch.fibaro_garage_light_outside_switch:
+  friendly_name: Lamp Buiten (Achter)
+  icon: mdi:lightbulb
+switch.fibaro_hall_light_switch_2:
+  friendly_name: Lamp Hal
+  icon: mdi:lightbulb
+switch.fibaro_livingroom_back_switch:
+  friendly_name: Lamp Woonkamer (Achter)
+  icon: mdi:lightbulb
+switch.fibaro_livingroom_front_switch:
+  friendly_name: Lamp Woonkamer (Voor)
+  icon: mdi:lightbulb
+switch.fibaro_scullery_outside_switch_2:
+  friendly_name: Lamp Bijkeuken (Buiten)
+  icon: mdi:lightbulb
+switch.fibaro_shed_light_switch:
+  friendly_name: Lamp Schuur
+  icon: mdi:lightbulb
+
+# EasyESP switches
+switch.socket_livingroom_cabinet:
+  friendly_name: Lamp Woonkamer (Kast)
+  icon: mdi:lamp
+  assumed_state: false
+switch.socket_livingroom_window:
+  friendly_name: Lamp Woonkamer (Raam)
+  icon: mdi:lamp
+  assumed_state: false
+switch.socket_shed_garden:
+  friendly_name: Stopcontact (Schuur)
+  icon: mdi:power-socket-eu
+  assumed_state: false

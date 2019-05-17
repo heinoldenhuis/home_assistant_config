@@ -1,0 +1,10 @@
+# Currently no scripts
+philipstv_press_button:
+  sequence:
+    service: rest_command.philipstv_send_key
+    data_template: {"key": "{{key}}"}
+
+cable_receiver_send_key:
+  sequence:
+    service: rest_command.cable_receiver_send_key
+    data_template: {"command": "{{command}}"}

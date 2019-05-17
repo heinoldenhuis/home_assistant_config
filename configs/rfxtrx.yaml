@@ -1,0 +1,3 @@
+# RFXCom (for controlling 433Mhz devices)
+device: !secret device_path_rfxtrx
+debug: false

@@ -1,0 +1,193 @@
+# Weather prediction sensors.
+- platform: buienradar
+  name: Weather
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  monitored_conditions:
+    - temperature
+    - symbol
+    - precipitation
+    - windspeed
+    - pressure
+    - winddirection
+    - humidity
+    - visibility
+    - precipitation_forecast_average
+
+# Smart meter sensors.
+- platform: dsmr
+  port: !secret device_path_smartmeter
+  dsmr_version: 2.2
+
+# Waze Travel Time sensors.
+- platform: waze_travel_time
+  name: anneke_travels_home
+  origin: device_tracker.anneke_nokia
+  destination: zone.home
+  region: 'EU'
+- platform: waze_travel_time
+  name: hein_travels_home
+  origin: device_tracker.hein_mobile
+  destination: zone.home
+  region: 'EU'
+- platform: waze_travel_time
+  name: anneke_travels_to_work_place1
+  origin: device_tracker.anneke_nokia
+  destination: zone.work_anneke_place1
+  region: 'EU'
+- platform: waze_travel_time
+  name: anneke_travels_to_work_place2
+  origin: device_tracker.anneke_nokia
+  destination: zone.work_anneke_place2
+  region: 'EU'
+- platform: waze_travel_time
+  name: hein_travels_to_work
+  origin: device_tracker.hein_mobile
+  destination: zone.work_hein
+  region: 'EU'
+
+# Reverse Geocode (PLACE).
+- platform: places
+  name: hein_geocode
+  devicetracker_id: device_tracker.hein_mobile
+  options: street,city
+  home_zone: zone.home
+  api_key: !secret email_hein
+- platform: places
+  name: anneke_geocode
+  devicetracker_id: device_tracker.anneke_nokia
+  options: street,city
+  home_zone: zone.home
+  api_key: !secret email_anneke
+
+# Tracker sensors.
+- platform: template
+  sensors:
+    anneketracker:
+      value_template: '{% if states.device_tracker.anneke_nokia.state.lower() == "home" %}Thuis{% 
+        elif states.device_tracker.anneke_nokia.state.lower() == "work_anneke_place1" %}Op het werk (Scheper){% 
+        elif states.device_tracker.anneke_nokia.state.lower() == "work_anneke_place2" %}Op het werk (Bethesda){% 
+        elif states.proximity.home_anneke.attributes.dir_of_travel.lower() == "towards" %}Onderweg naar huis ({{ (as_timestamp(now()) + ((states.sensor.anneke_travels_home.state | int) * 60)) | timestamp_custom("%H:%M") }}){% 
+        elif states.proximity.work_anneke_place1.attributes.dir_of_travel.lower() == "towards" %}Onderweg naar het werk ({{ (as_timestamp(now()) + ((states.sensor.anneke_travels_to_work_place1.state | int) * 60)) | timestamp_custom("%H:%M") }}){% 
+        elif states.proximity.work_anneke_place2.attributes.dir_of_travel.lower() == "towards" %}Onderweg naar het werk ({{ (as_timestamp(now()) + ((states.sensor.anneke_travels_to_work_place2.state | int) * 60)) | timestamp_custom("%H:%M") }}){% 
+        elif states.sensor.anneke_geocode.attributes["devicetracker_zone"].lower() == "not_home" %}{{states.sensor.anneke_geocode.state}}{%
+        else %}Niet thuis{% endif %}'
+#        elif states.sensor.anneke_geocode.state.lower() == "valid" %}{{states.sensor.anneke_geocode.attributes["Friendly Format"]}}{%
+#        else %}Niet thuis{% endif %}'
+    heintracker:
+      value_template: '{% if states.device_tracker.hein_mobile.state.lower() == "home" %}Thuis{% 
+        elif states.device_tracker.hein_mobile.state.lower() == "work_hein" %}Op het werk{% 
+        elif states.proximity.home_hein.attributes.dir_of_travel.lower() == "towards" %}Onderweg naar huis ({{ (as_timestamp(now()) + ((states.sensor.hein_travels_home.state | int) * 60)) | timestamp_custom("%H:%M") }}){% 
+        elif states.proximity.work_hein.attributes.dir_of_travel.lower() == "towards" %}Onderweg naar het werk ({{ (as_timestamp(now()) + ((states.sensor.hein_travels_to_work.state | int) * 60)) | timestamp_custom("%H:%M") }}){% 
+        elif states.sensor.hein_geocode.attributes["devicetracker_zone"].lower() == "not_home" %}{{states.sensor.hein_geocode.state}}{%
+        else %}Niet thuis{% endif %}'
+#        elif states.sensor.hein_geocode.state.lower() == "valid" %}{{states.sensor.hein_geocode.attributes["Friendly Format"]}}{%
+#        else %}Niet thuis{% endif %}'
+    sun_state:
+      friendly_name: 'Zon status'
+      value_template: '{% if is_state("sun.sun", "above_horizon") %}Zon op{% else %}Zon onder{% endif %}'
+      icon_template: '{% if is_state("sun.sun", "above_horizon") %}mdi:weather-sunny{% else %}mdi:weather-night{% endif %}'
+
+# Consumption Tariff
+- platform: template
+  sensors:
+    power_tariff_view:
+      value_template: '{% if is_state("sensor.power_tariff", "normal") %}Piek{% else %}Dal{% endif %}'
+
+# Omnik component
+- platform: omnik
+  inverter_host: !secret sensor_omnik_inverter_host
+  inverter_port: !secret sensor_omnik_inverter_port
+  inverter_serial: !secret sensor_omnik_inverter_serial
+  scan_interval: 60
+  sensors:
+    status:
+    actualpower: [energytoday, energytotal, invertersn]
+    energytoday:
+    energytotal:
+    hourstotal:
+    invertersn:
+    temperature:
+    dcinputvoltage:
+    dcinputcurrent:
+    acoutputvoltage:
+    acoutputcurrent:
+    acoutputfrequency:
+    acoutputpower:
+
+# Home Assistant Log DB size
+- platform: command_line
+  name: log_db_file_size
+  command: "du -m /config/home-assistant_v2.db | cut -f1"
+  unit_of_measurement: 'MB'
+  value_template: '{{ value | int - 1 | round(2) }}'
+  scan_interval: 300
+
+# CPU Temperature
+- platform: command_line
+  name: cpu_temperature
+  command: 'cat /sys/class/thermal/thermal_zone0/temp'
+  # If errors occur, remove degree symbol below
+  unit_of_measurement: '°C'
+  value_template: '{{ value | multiply(0.001) | round(2) }}'
+
+# Home Assistant DuckDNS cert_expiry
+- platform: cert_expiry
+  name: ssl_certificate_expiry
+  host: !secret link_base_host
+  port: 443
+
+# ESP8266: Shed Garden Temperature
+- platform: mqtt
+  name: 'Temperature'
+  state_topic: '/powersocket3/thsensor/Temperature'
+  qos: 0
+  unit_of_measurement: '°C'
+
+# ESP8266: Shed Garden Humidity
+- platform: mqtt
+  name: 'Humidity'
+  state_topic: '/powersocket3/thsensor/Humidity'
+  qos: 0
+  unit_of_measurement: "%"
+
+# MQTT Event Backup to Google Drive
+- platform: mqtt
+  name: "Google Backup Results"
+  state_topic: "googlebackup/result"
+  json_attributes_topic: "googlebackup/result"
+- platform: mqtt
+  name: "Google Adhoc Backup Results"
+  state_topic: "googlebackup/adhocresult"
+  json_attributes_topic: "googlebackup/adhocresult"
+
+# Power consumption and production sensors
+- platform: template
+  sensors:
+    solar_power:
+      friendly_name: 'Zonnepanelen productie'
+      unit_of_measurement: 'Watt'
+      value_template: >
+        {% if states('sensor.omnik_actual_power')|int > 0 %}
+          {{ states('sensor.omnik_actual_power')|int }}
+        {% else %}
+          0
+        {% endif %}
+    grid_power_consumption:
+      friendly_name: 'Lichtnet consumptie'
+      unit_of_measurement: 'Watt'
+      value_template: >
+        {% if (1000 * states('sensor.power_consumption')|float)|int > 0 %}
+          {{ (1000 * states('sensor.power_consumption')|float)|int }}
+        {% else %}
+          0
+        {% endif %}
+    grid_power_production:
+      friendly_name: 'Lichtnet productie'
+      unit_of_measurement: 'Watt'
+      value_template: >
+        {% if (1000 * states('sensor.power_production')|float)|int > 0 %}
+          {{ (1000 * states('sensor.power_production')|float)|int }}
+        {% else %}
+          0
+        {% endif %}

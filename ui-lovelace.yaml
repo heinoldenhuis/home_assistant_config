@@ -1,0 +1,1091 @@
+# -= LOVELACE UI =-
+resources:
+  - url: /customcards/github/gurbyz/power-wheel-card.js?track=true
+    type: module
+  - url: /customcards/github/custom-cards/tracker-card.js?track=true
+    type: module
+  - url: /customcards/github/thomasloven/card-tools.js?track=true
+    type: js
+  - url: /customcards/github/thomasloven/card-modder.js?track=true
+    type: js
+# Views
+title: Thuis
+views:
+    # The name of a view will be used as tab title.
+  - title: Thuis
+    badges:
+      - device_tracker.hein_mobile_wifi
+      - device_tracker.anneke_mobile_wifi
+    cards:
+      - type: thermostat
+        entity: climate.living_room
+      - id: 95b7e6bb495544359172de9e183bb087  # Automatically created id
+        type: entities
+        title: Woonkamer
+        show_header_toggle: true
+        entities:
+          #- climate.living_room
+          - sensor.living_room_thermostat_humidity
+          - switch.fibaro_livingroom_back_switch
+          - switch.fibaro_livingroom_front_switch
+          - switch.socket_livingroom_cabinet
+          - switch.socket_livingroom_window
+      - id: c34747869dab4f3e89db4d508fcf6242  # Automatically created id
+        type: entities
+        title: Hal/Overloop
+        show_header_toggle: true
+        entities:
+          - light.light_corridor
+          - light.light_hall
+      - type: entities
+        title: Slaapkamer
+        show_header_toggle: true
+        entities:
+          - light.lamp_slaapkamer
+      - id: 2b5fdd28fd91435281b84d932b5dfeb5  # Automatically created id
+        type: entities
+        title: Garage
+        show_header_toggle: true
+        entities:
+          - switch.fibaro_garage_light_back_switch
+          - switch.fibaro_garage_light_outside_switch
+          - switch.fibaro_carport_spots_switch
+          - switch.fibaro_scullery_outside_switch_2
+      - id: b2362796cacb49c9a667a4916abdf25e  # Automatically created id
+        type: entities
+        title: Schuur
+        show_header_toggle: true
+        entities:
+          - switch.fibaro_shed_light_switch
+          - light.milight_shed_garden_mqtt
+          - switch.socket_shed_garden
+          - sensor.temperature
+          - sensor.humidity
+    id: home
+    icon: mdi:home-assistant
+    theme: darkcyan
+  - icon: mdi:atom
+    # The name of a view will be used as tab title.
+    title: Utilities
+    id: utilities
+    theme: darkcyan
+    cards:
+      - id: b423e4d33e5a4d87893cae2733a459f2  # Automatically created id
+        type: entities
+        title: Slimme meter
+        show_header_toggle: false
+        entities:
+          - sensor.power_consumption
+          - sensor.power_consumption_low
+          - sensor.power_consumption_normal
+          - sensor.power_production
+          - sensor.power_production_low
+          - sensor.power_production_normal
+          - sensor.power_tariff_view
+          - sensor.gas_consumption
+          - sensor.hourly_gas_consumption
+      - id: 31f4ca99c7f74da584adb288a0aed31a  # Automatically created id
+        type: entities
+        title: Zonnepanelen
+        show_header_toggle: false
+        entities:
+          - type: custom:card-modder
+            card:
+              type: custom:hui-toggle-entity-row
+              entity: sensor.omnik_status
+            style:
+              --Online-color: green
+              --Offline-color: red
+              --paper-item-icon-color: var(--[[ sensor.omnik_status.state ]]-color)
+          - sensor.omnik_actual_power
+          - sensor.omnik_energy_today
+          - sensor.omnik_energy_total
+          - sensor.omnik_hours_total
+          - sensor.omnik_inverter_serial_number
+          - sensor.omnik_temperature
+          - sensor.omnik_dc_input_voltage
+          - sensor.omnik_dc_input_current
+          - sensor.omnik_ac_output_voltage
+          - sensor.omnik_ac_output_current
+          - sensor.omnik_ac_output_frequency
+          - sensor.omnik_ac_output_power
+          #- sensor.omnik_income_today
+          #- sensor.omnik_income_total
+      - type: "custom:power-wheel-card"
+        title: "Productie/Consumptie Overzicht"
+        solar_power_entity: sensor.solar_power
+        grid_power_consumption_entity: sensor.grid_power_consumption
+        grid_power_production_entity: sensor.grid_power_production
+        solar_icon: "mdi:white-balance-sunny"
+        grid_icon: "mdi:flash"
+        home_icon: "mdi:home-assistant"
+        color_icons: true
+  - icon: mdi:television-classic
+    # The name of a view will be used as tab title.
+    title: Media
+    id: media
+    theme: darkcyan
+    cards:
+      - id: e9f78ea55ccb46ee9ccb72e96db4745f  # Automatically created id
+        type: media-control
+        entity: media_player.kodi
+      - id: 8540832238f0428a897a939de30ca868  # Automatically created id
+        type: media-control
+        entity: media_player.chromecast_woonkamer
+      - id: 20da25d8475f4b57a814c2225946c9a7  # Automatically created id
+        type: media-control
+        entity: media_player.philips_tv
+      - id: 58b38023b8d3477589567b44336c8ead  # Automatically created id
+        type: media-control
+        entity: media_player.cable_receiver
+      - type: media-control
+        entity: media_player.googlehome7121
+  #- icon: mdi:remote
+    # The name of a view will be used as tab title.
+    # title: Remote
+    # id: remote
+    # theme: darkcyan
+    # cards:
+    #   - id: 16c6c2453c064d0ea3a1b70b2fb072ee  # Automatically created 
+    #     type: picture-elements
+    #     image: /local/remote/background.png
+    #     title: Test Afstandbediening
+    #     elements:
+    #       - type: image
+    #         image: /local/remote/volume-down.png
+      #       title: Volume Down
+      #       service: script.cable_receiver_send_key
+      #       service_data:
+      #         command: "114"
+      #       style:
+      #         top: 10%
+      #         left: 70%
+      #     - type: image
+      #       image: /local/remote/volume-up.png
+      #       title: Volume Up
+      #       service: script.cable_receiver_send_key
+      #       service_data:
+      #         command: "115"
+      #       style:
+      #         top: 10%
+      #         left: 30%
+      # - id: 16c6c2453c064d0ea3a1b70b2fb072ef  # Automatically created id
+      #   type: picture-elements
+      #   image: /local/remote/background.png
+      #   title: Ontvanger Afstandbediening
+      #   elements:
+      #     - type: image
+      #       image: /local/remote/standby.png
+      #       tap_action: call-service
+      #       title: Standby
+      #       service: script.cable_receiver_send_key
+      #       service_data: {"command": "116"}
+      #       style:
+      #         top: 10%
+      #         left: 50%
+      #         width: 15%
+      #     - type: image
+      #       image: /local/remote/tv.png
+      #       tap_action: call-service
+      #       title: TV
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 377}
+      #       style:
+      #         top: 23%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/radio.png
+      #       tap_action: call-service
+      #       title: Radio
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 385}
+      #       style:
+      #         top: 23%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/help.png
+      #       tap_action: call-service
+      #       title: Help
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 138}
+      #       style:
+      #         top: 23%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/info.png
+      #       tap_action: call-service
+      #       title: Info
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 358}
+      #       style:
+      #         top: 23%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-up.png
+      #       tap_action: call-service
+      #       title: Up
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 103}
+      #       style:
+      #         top: 23%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/menu.png
+      #       tap_action: call-service
+      #       title: Menu
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 139}
+      #       style:
+      #         top: 23%
+      #         left: 85%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/1.png
+      #       tap_action: call-service
+      #       title: 1
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 2}
+      #       style:
+      #         top: 32%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/2.png
+      #       tap_action: call-service
+      #       title: 2
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 3}
+      #       style:
+      #         top: 32%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/3.png
+      #       tap_action: call-service
+      #       title: 3
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 4}
+      #       style:
+      #         top: 32%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-left.png
+      #       tap_action: call-service
+      #       title: Left
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 105}
+      #       style:
+      #         top: 32%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/confirm.png
+      #       tap_action: call-service
+      #       title: OK
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 352}
+      #       style:
+      #         top: 32%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-right.png
+      #       tap_action: call-service
+      #       title: Right
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 106}
+      #       style:
+      #         top: 32%
+      #         left: 85%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/4.png
+      #       tap_action: call-service
+      #       title: 4
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 5}
+      #       style:
+      #         top: 41%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/5.png
+      #       tap_action: call-service
+      #       title: 5
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 6}
+      #       style:
+      #         top: 41%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/6.png
+      #       tap_action: call-service
+      #       title: 6
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 7}
+      #       style:
+      #         top: 41%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/audio.png
+      #       tap_action: call-service
+      #       title: Audio
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 392}
+      #       style:
+      #         top: 41%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-down.png
+      #       tap_action: call-service
+      #       title: Down
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 108}
+      #       style:
+      #         top: 41%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/pvr.png
+      #       tap_action: call-service
+      #       title: PVR
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 393}
+      #       style:
+      #         top: 41%
+      #         left: 85%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/7.png
+      #       tap_action: call-service
+      #       title: 7
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 8}
+      #       style:
+      #         top: 50%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/8.png
+      #       tap_action: call-service
+      #       title: 8
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 9}
+      #       style:
+      #         top: 50%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/9.png
+      #       tap_action: call-service
+      #       title: 9
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 10}
+      #       style:
+      #         top: 50%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/text.png
+      #       tap_action: call-service
+      #       title: Teletext
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 388}
+      #       style:
+      #         top: 50%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/exit.png
+      #       tap_action: call-service
+      #       title: Exit
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 174}
+      #       style:
+      #         top: 50%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/record.png
+      #       tap_action: call-service
+      #       title: Record
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 167}
+      #       style:
+      #         top: 50%
+      #         left: 85%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-left.png
+      #       tap_action: call-service
+      #       title: <
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 403}
+      #       style:
+      #         top: 59%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/0.png
+      #       tap_action: call-service
+      #       title: '0'
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 11}
+      #       style:
+      #         top: 59%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-right.png
+      #       tap_action: call-service
+      #       title: >
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 402}
+      #       style:
+      #         top: 59%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/rewind.png
+      #       tap_action: call-service
+      #       title: Rewind
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 168}
+      #       style:
+      #         top: 59%
+      #         left: 56%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/playpause.png
+      #       tap_action: call-service
+      #       title: Play/Pause
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 207}
+      #       style:
+      #         top: 59%
+      #         left: 66%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/stop.png
+      #       tap_action: call-service
+      #       title: Stop
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 128}
+      #       style:
+      #         top: 59%
+      #         left: 76%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/fastforward.png
+      #       tap_action: call-service
+      #       title: Forward
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 159}
+      #       style:
+      #         top: 59%
+      #         left: 86%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/volume-down.png
+      #       tap_action: call-service
+      #       title: Volume Down
+      #       service: script.cable_receiver_send_key
+      #       service_data: {"command": "114"}
+      #       style:
+      #         top: 68%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/volume-mute.png
+      #       tap_action: call-service
+      #       title: Mute
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 113}
+      #       style:
+      #         top: 68%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/volume-up.png
+      #       tap_action: call-service
+      #       title: Volume Up
+      #       service: script.cable_receiver_send_key
+      #       service_data: {"command": "115"}
+      #       style:
+      #         top: 68%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/red.png
+      #       tap_action: call-service
+      #       title: Red
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 398}
+      #       style:
+      #         top: 68%
+      #         left: 56%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/green.png
+      #       tap_action: call-service
+      #       title: Green
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 399}
+      #       style:
+      #         top: 68%
+      #         left: 66%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/yellow.png
+      #       tap_action: call-service
+      #       title: Yellow
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 400}
+      #       style:
+      #         top: 68%
+      #         left: 76%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/blue.png
+      #       tap_action: call-service
+      #       title: Blue
+      #       service: script.cable_receiver_send_key
+      #       service_data: {command: 401}
+      #       style:
+      #         top: 68%
+      #         left: 86%
+      #         width: 8%
+      # - id: d879c60072b9446baca40208ace5d9b3  # Automatically created id
+      #   type: picture-elements
+      #   image: /local/remote/background.png
+      #   title: Televisie Afstandbediening
+      #   elements:
+      #     - type: image
+      #       image: /local/remote/standby.png
+      #       tap_action: call-service
+      #       title: Standby
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Standby}
+      #       style:
+      #         top: 10%
+      #         left: 50%
+      #         width: 15%
+      #     - type: image
+      #       image: /local/remote/stop.png
+      #       tap_action: call-service
+      #       title: Stop
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Stop}
+      #       style:
+      #         top: 23%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/pause.png
+      #       tap_action: call-service
+      #       title: Pause
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Pause}
+      #       style:
+      #         top: 23%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/record.png
+      #       tap_action: call-service
+      #       title: Record
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Record}
+      #       style:
+      #         top: 23%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/rewind.png
+      #       tap_action: call-service
+      #       title: Rewind
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Rewind}
+      #       style:
+      #         top: 23%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/play.png
+      #       tap_action: call-service
+      #       title: Play
+      #       service: script.philipstv_press_button
+      #       service_data: {key: PlayPause}
+      #       style:
+      #         top: 23%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/fastforward.png
+      #       tap_action: call-service
+      #       title: Forward
+      #       service: script.philipstv_press_button
+      #       service_data: {key: FastForward}
+      #       style:
+      #         top: 23%
+      #         left: 85%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/home.png
+      #       tap_action: call-service
+      #       title: Home
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Home}
+      #       style:
+      #         top: 32%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/smarttv.png
+      #       tap_action: call-service
+      #       title: Smart TV
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Online}
+      #       style:
+      #         top: 32%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/ambilight.png
+      #       tap_action: call-service
+      #       title: Ambilight
+      #       service: script.philipstv_press_button
+      #       service_data: {key: AmbilightOnOff}
+      #       style:
+      #         top: 32%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/source.png
+      #       tap_action: call-service
+      #       title: Source
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Source}
+      #       style:
+      #         top: 32%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/tv.png
+      #       tap_action: call-service
+      #       title: TV
+      #       service: script.philipstv_press_button
+      #       service_data: {key: WatchTV}
+      #       style:
+      #         top: 32%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/format.png
+      #       tap_action: call-service
+      #       title: Format
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Viewmode}
+      #       style:
+      #         top: 32%
+      #         left: 85%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/1.png
+      #       tap_action: call-service
+      #       title: 1
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit1}
+      #       style:
+      #         top: 41%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/2.png
+      #       tap_action: call-service
+      #       title: 2
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit2}
+      #       style:
+      #         top: 41%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/3.png
+      #       tap_action: call-service
+      #       title: 3
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit3}
+      #       style:
+      #         top: 41%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/guide.png
+      #       tap_action: call-service
+      #       title: Guide
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Find}
+      #       style:
+      #         top: 41%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-up.png
+      #       tap_action: call-service
+      #       title: Up
+      #       service: script.philipstv_press_button
+      #       service_data: {key: CursorUp}
+      #       style:
+      #         top: 41%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/info.png
+      #       tap_action: call-service
+      #       title: Info
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Info}
+      #       style:
+      #         top: 41%
+      #         left: 85%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/4.png
+      #       tap_action: call-service
+      #       title: 4
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit4}
+      #       style:
+      #         top: 50%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/5.png
+      #       tap_action: call-service
+      #       title: 5
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit5}
+      #       style:
+      #         top: 50%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/6.png
+      #       tap_action: call-service
+      #       title: 6
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit6}
+      #       style:
+      #         top: 50%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-left.png
+      #       tap_action: call-service
+      #       title: Left
+      #       service: script.philipstv_press_button
+      #       service_data: {key: CursorLeft}
+      #       style:
+      #         top: 50%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/confirm.png
+      #       tap_action: call-service
+      #       title: OK
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Confirm}
+      #       style:
+      #         top: 50%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-right.png
+      #       tap_action: call-service
+      #       title: Right
+      #       service: script.philipstv_press_button
+      #       service_data: {key: CursorRight}
+      #       style:
+      #         top: 50%
+      #         left: 85%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/7.png
+      #       tap_action: call-service
+      #       title: 7
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit7}
+      #       style:
+      #         top: 59%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/8.png
+      #       tap_action: call-service
+      #       title: 8
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit8}
+      #       style:
+      #         top: 59%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/9.png
+      #       tap_action: call-service
+      #       title: 9
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit9}
+      #       style:
+      #         top: 59%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/back.png
+      #       tap_action: call-service
+      #       title: Back
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Back}
+      #       style:
+      #         top: 59%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/cursor-down.png
+      #       tap_action: call-service
+      #       title: Down
+      #       service: script.philipstv_press_button
+      #       service_data: {key: CursorDown}
+      #       style:
+      #         top: 59%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/options.png
+      #       tap_action: call-service
+      #       title: Options
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Options}
+      #       style:
+      #         top: 59%
+      #         left: 85%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/subtitle.png
+      #       tap_action: call-service
+      #       title: Subtitle
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Subtitle}
+      #       style:
+      #         top: 68%
+      #         left: 15%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/0.png
+      #       tap_action: call-service
+      #       title: '0'
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Digit0}
+      #       style:
+      #         top: 68%
+      #         left: 29%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/text.png
+      #       tap_action: call-service
+      #       title: Teletext
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Teletext}
+      #       style:
+      #         top: 68%
+      #         left: 43%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/channel-down.png
+      #       tap_action: call-service
+      #       title: Channel Down
+      #       service: script.philipstv_press_button
+      #       service_data: {key: ChannelStepDown}
+      #       style:
+      #         top: 68%
+      #         left: 62%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/channel-up.png
+      #       tap_action: call-service
+      #       title: Channel Up
+      #       service: script.philipstv_press_button
+      #       service_data: {key: ChannelStepUp}
+      #       style:
+      #         top: 68%
+      #         left: 80%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/red.png
+      #       tap_action: call-service
+      #       title: Red
+      #       service: script.philipstv_press_button
+      #       service_data: {key: RedColour}
+      #       style:
+      #         top: 77%
+      #         left: 14%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/green.png
+      #       tap_action: call-service
+      #       title: Green
+      #       service: script.philipstv_press_button
+      #       service_data: {key: GreenColour}
+      #       style:
+      #         top: 77%
+      #         left: 24%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/yellow.png
+      #       tap_action: call-service
+      #       title: Yellow
+      #       service: script.philipstv_press_button
+      #       service_data: {key: YellowColour}
+      #       style:
+      #         top: 77%
+      #         left: 34%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/blue.png
+      #       tap_action: call-service
+      #       title: Blue
+      #       service: script.philipstv_press_button
+      #       service_data: {key: BlueColour}
+      #       style:
+      #         top: 77%
+      #         left: 44%
+      #         width: 8%
+      #     - type: image
+      #       image: /local/remote/volume-down.png
+      #       tap_action: call-service
+      #       title: Volume Down
+      #       service: script.philipstv_press_button
+      #       service_data: {key: VolumeDown}
+      #       style:
+      #         top: 77%
+      #         left: 57%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/volume-mute.png
+      #       tap_action: call-service
+      #       title: Mute
+      #       service: script.philipstv_press_button
+      #       service_data: {key: Mute}
+      #       style:
+      #         top: 77%
+      #         left: 71%
+      #         width: 10%
+      #     - type: image
+      #       image: /local/remote/volume-up.png
+      #       tap_action: call-service
+      #       title: Volume Up
+      #       service: script.philipstv_press_button
+      #       service_data: {key: VolumeUp}
+      #       style:
+      #         top: 77%
+      #         left: 85%
+      #         width: 10%
+  - icon: mdi:crosshairs-gps
+    # The name of a view will be used as tab title.
+    title: Locatie
+    id: locations
+    theme: darkcyan
+    cards:
+      - id: dbd9b6117070426ca59a171312e8f0dc  # Automatically created id
+        type: entities
+        title: Volgen
+        show_header_toggle: false
+        entities:
+          - sensor.heintracker
+          - sensor.anneketracker
+      - id: ff2c28a825434040a2f4218fca63e1e2  # Automatically created id
+        type: map
+        aspect_ratio: 16x9
+        entities:
+          - device_tracker.anneke_nokia
+          - device_tracker.hein_mobile
+  - icon: mdi:weather-sunny
+    # The name of a view will be used as tab title.
+    title: Weer
+    id: weather
+    theme: darkcyan
+    cards:
+      - id: a0f6d6c651d443b49ce383b536a52e44  # Automatically created id
+        type: entities
+        title: Weer
+        show_header_toggle: false
+        entities:
+          - sensor.sun_state
+          - sensor.weather_temperature
+          - sensor.weather_humidity
+          - sensor.weather_visibility
+          - sensor.weather_precipitation
+          - sensor.weather_precipitation_forecast_average
+          - sensor.weather_pressure
+          - sensor.weather_wind_direction
+          - sensor.weather_wind_speed
+          #- sensor.outside_rain_rate
+      - id: 4aff3462f6394415893b2c7ed47a5b03  # Automatically created id
+        type: picture-entity
+        entity: camera.weather_precipitation_radar
+        show_state: false
+      - id: c0cdf92e981e4bbd941b7e15ce17ff1f  # Automatically created id
+        type: picture-entity
+        entity: camera.weather_meteogram
+        show_state: false
+  - icon: mdi:cctv
+    # The name of a view will be used as tab title.
+    title: Cameras
+    id: cameras
+    theme: darkcyan
+    cards:
+      - id: e66fde8e22e240318ec1eb434d65764d  # Automatically created id
+        type: picture-entity
+        entity: camera.carport_overcap
+        show_state: false
+      - id: 46f74e98bca04f9c95ace349fc81e5a7  # Automatically created id
+        type: picture-entity
+        entity: camera.shed_overcap
+        camera_image: camera.shed_overcap
+        show_state: false
+      - id: 9be5b2f1792440f09c39edbe7bed672d  # Automatically created id
+        type: picture-entity
+        entity: camera.garden
+        show_state: false
+#      - type: picture-entity
+#        entity: camera.opencv_camera_carport
+  - icon: mdi:settings
+    # The name of a view will be used as tab title.
+    title: Tooling
+    theme: darkcyan
+    cards:
+      - id: 2f7bc6a3b6544b70849ca3eb62a79123  # Automatically created id
+        type: entities
+        title: Home Assistant Overzicht
+        show_header_toggle: false
+        entities:
+          - sensor.log_db_file_size
+          - sensor.cpu_temperature
+          - sensor.ssl_certificate_expiry
+      - type: custom:tracker-card
+        trackers: ['sensor.custom_card_tracker', 'sensor.custom_component_tracker']
+        title: "Updates"
+        name_text: "Naam"
+        current_text: "Huidig"
+        available_text: "Beschikbaar"
+        check_text: "Controleren"
+        update_all_text: "Alles Bijwerken"

@@ -1,0 +1,34 @@
+# Recorder purge (remove historic data from the database).
+purge_interval: 2
+purge_keep_days: 5
+include:
+  domains:
+    - climate
+    - device_tracker
+    - light
+    - sensor
+    - switch
+    - media_player
+exclude:
+  entities:
+    - device_tracker.anneke_nokia
+    - device_tracker.hein_mobile
+    - sensor.anneke_travels_home
+    - sensor.anneke_travels_to_work
+    - sensor.hein_travels_home
+    - sensor.hein_travels_to_work
+    - sensor.omnik_ac_output_current
+    - sensor.omnik_ac_output_frequency
+    - sensor.omnik_ac_output_power
+    - sensor.omnik_ac_output_voltage
+    - sensor.omnik_dc_input_current
+    - sensor.omnik_dc_input_voltage
+    - sensor.omnik_hours_total
+    - sensor.omnik_inverter_serial_number
+    - sensor.omnik_status
+    - sensor.power_consumption_low
+    - sensor.power_consumption_normal
+    - sensor.power_production_low
+    - sensor.power_production_normal
+    - sensor.power_tariff
+    - sensor.ssl_certificate_expiry

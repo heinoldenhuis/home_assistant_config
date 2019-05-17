@@ -1,0 +1,12 @@
+camera.carport_overcap:
+  friendly_name: Carport
+  icon: mdi:camera
+camera.garden:
+  friendly_name: Tuin
+  icon: mdi:camera
+camera.shed_overcap:
+  friendly_name: Schuur (Overkapping)
+  icon: mdi:camera
+camera.locations_hein:
+  friendly_name: Locations
+  icon: mdi:map

@@ -1,0 +1,23 @@
+# Limitless/Milight lights.
+light.milight_shed_garden_mqtt:
+  friendly_name: Spots Schuur (Buiten)
+  icon: mdi:spotlight-beam
+  assumed_state: false
+  emulated_hue: false
+
+# Ikea TRÅDFRI lights.
+light.lamp_hal:
+  friendly_name: Lamp Hal
+  icon: mdi:lightbulb
+light.light_hall:
+  friendly_name: Lamp Hal
+  icon: mdi:lightbulb
+light.lamp_overloop:
+  friendly_name: Lamp Overloop
+  icon: mdi:lightbulb
+light.light_corridor:
+  friendly_name: Lamp Overloop (Boven)
+  icon: mdi:lightbulb
+light.lamp_slaapkamer:
+  friendly_name: Lamp Slaapkamer (Ouders)
+  icon: mdi:lightbulb

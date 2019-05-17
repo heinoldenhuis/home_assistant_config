@@ -1,0 +1,30 @@
+# At first everything will be ignored.
+# Then specify which files must not be ignored.
+*
+
+# Do not ignore the following file extensions.
+!*.py
+!*.yaml
+!.gitignore
+!*.md
+!manifest.json
+
+# Do not ignore the following folders.
+!configs
+!custom_components
+!custom_components/custom_updater
+!custom_components/enigma
+!custom_components/omnik
+!custom_components/philipstv
+!custom_components/places
+!customizations
+!scripts
+!theme
+!www
+
+# Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+customize.yaml
+known_devices.yaml
+secrets.yaml
+scripts.yaml
+!scripts/scripts.yaml

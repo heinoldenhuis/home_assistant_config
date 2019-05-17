@@ -1,0 +1,17 @@
+# Kodi mediaplayer living room.
+- platform: kodi
+  host: !secret media_kodi_host
+
+# Philips TV living room.
+- platform: philipstv
+  host: !secret media_tv_host
+
+# Cable receiver.
+#- platform: enigma
+#  host: !secret media_cable_host
+#  port: !secret media_cable_port
+#  name: cable_receiver
+#  icon: mdi:television-clasic
+#  timeout: 20
+#  username: !secret media_cable_username
+#  password: !secret media_cable_password

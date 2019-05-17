@@ -1,0 +1,10 @@
+device_tracker.hein_mobile_wifi:
+  friendly_name: Hein
+device_tracker.anneke_mobile_wifi:
+  friendly_name: Anneke
+sensor.heintracker:
+  friendly_name: Hein
+  entity_picture: /local/hein.jpg
+sensor.anneketracker:
+  friendly_name: Anneke
+  entity_picture: /local/anneke.jpg

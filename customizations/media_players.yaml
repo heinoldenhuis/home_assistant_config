@@ -1,0 +1,3 @@
+media_player.cable_receiver:
+  friendly_name: Ontvanger
+  icon: mdi:television-clasic

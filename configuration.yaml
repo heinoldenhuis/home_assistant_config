@@ -1,0 +1,179 @@
+homeassistant:
+  # Name of the location where Home Assistant is running.
+  name: Thuis
+  # Location required to calculate the time the sun rises and sets.
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters).
+  elevation: !secret home_elevation
+  # metric for Metric, imperial for Imperial.
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
+  time_zone: Europe/Amsterdam
+  # Customize Home Assistant.
+  customize: !include_dir_merge_named customizations
+
+# Enable Lovelace YAML mode.
+lovelace:
+  mode: yaml
+
+# Enables the frontend.
+frontend:
+  themes: !include theme/themes.yaml
+
+# Enables configuration UI.
+config:
+
+# The http component serves all files and data required for the Home Assistant frontend.
+http:
+  # Set the DuckDNS url and use the SSL/TLS certificated for https secure connection.
+  base_url: !secret link_base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  # A list of origin domain names to allow CORS requests from.
+  # Enabling this will set the Access-Control-Allow-Origin header to the Origin header if it is found in the list,
+  # and the Access-Control-Allow-Headers header to Origin, Accept, X-Requested-With, Content-type, Authorization.
+  # You must provide the exact Origin, i.e. https://www.home-assistant.io will allow requests from
+  # https://www.home-assistant.io but not http://www.home-assistant.io.
+  cors_allowed_origins:
+    - !secret cors_allowed_origins_cloud
+    - !secret cors_allowed_origins_dns
+
+# Checks for available updates.
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true
+
+# Auto update components.
+custom_updater:
+  track:
+    - cards
+    - components
+  card_urls:
+    - https://raw.githubusercontent.com/gurbyz/custom-cards-lovelace/master/custom_updater.json
+  component_urls:
+    - https://raw.githubusercontent.com/heinoldenhuis/home_assistant_omnik_solar/master/custom_components.json
+    #- https://raw.githubusercontent.com/cinzas/homeassistant-enigma-player/master/custom_components.json
+
+# Discover some devices automatically.
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers.
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook.
+logbook:
+# logger:
+#   default: warn
+#   logs:
+#     custom_components.sensor.places: debug
+
+# Enables a map showing the location of tracked devices.
+map:
+
+# Setup recorder and set the purge database interval.
+recorder: !include configs/recorder.yaml
+
+# Track the sun.
+sun:
+
+# The System Health component provides an API to offer information on the
+# system and it’s components. It also allows to run diagnostic tools to
+# diagnose problems.
+system_health:
+
+# Zone Home
+zone:
+  name: home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  radius: 100
+  icon: mdi:home
+
+# Zone Work Hein
+zone 2:
+  name: work_hein
+  latitude: !secret work_hein_latitude
+  longitude: !secret work_hein_longitude
+  radius: 200
+  icon: mdi:worker
+
+# Zone Work Anneke
+zone 3:
+  name: work_anneke_place1
+  latitude: !secret work_anneke_place1_latitude
+  longitude: !secret work_anneke_place1_longitude
+  radius: 400
+  icon: mdi:worker
+
+zone 4:
+  name: work_anneke_place2
+  latitude: !secret work_anneke_place2_latitude
+  longitude: !secret work_anneke_place2_longitude
+  radius: 400
+  icon: mdi:worker
+
+# Cloud services.
+cloud: !include configs/cloud.yaml
+
+# Device Tracker.
+device_tracker: !include configs/device_trackers.yaml
+
+# Camera and still image stuff.
+camera: !include configs/cameras.yaml
+
+# Enigma decoder for the cable receiver.
+enigma: !include configs/enigma.yaml
+
+# Lights, like MILight.
+light: !include configs/lights.yaml
+
+# Media Players.
+media_player: !include configs/media_players.yaml
+
+# MQTT Broker.
+mqtt: !include configs/mqtt.yaml
+
+# Nest Thermostat.
+# Depreacated: Configured via Next component.
+nest: !include configs/nest.yaml
+
+# Panels based on an iframe.
+panel_iframe: !include configs/panel_iframes.yaml
+
+# Proximity for monitoring the proximity of devices to a particular zone and the direction of travel.
+proximity: !include configs/proximity.yaml
+
+# Rest commands.
+rest_command: !include configs/rest_commands.yaml
+
+# RFXCom devices (temporarly disabled because no RFXCom devices are currently operational).
+#rfxtrx: !include configs/rfxtrx.yaml
+
+# Scenes.
+scene: !include configs/scenes.yaml
+
+# Scripts.
+script: !include scripts/scripts.yaml
+
+# Sensors.
+sensor: !include configs/sensors.yaml
+
+# Switches.
+switch: !include configs/switches.yaml
+
+# Text to speech.
+tts: !include configs/tts.yaml
+
+# ZWave devices.
+zwave: !include configs/zwave.yaml
+
+#group: !include groups.yaml.
+automation: !include automations.yaml

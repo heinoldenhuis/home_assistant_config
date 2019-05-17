@@ -1,0 +1,206 @@
+# Set theme at startup
+- alias: 'Set theme at startup'
+  initial_state: 'on'
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - service: frontend.set_theme
+    data:
+      name: darkcyan
+# Rule: Rule away Light on in the evening
+- id: '2012197900001'
+  alias: Rule away Light on in the evening
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 00:00:00
+  - platform: state
+    entity_id: device_tracker.hein_mobile_wifi
+    to: 'not_home'
+  - platform: state
+    entity_id: device_tracker.anneke_mobile_wifi
+    to: 'not_home'
+  condition:
+  - condition: sun
+    after: sunset
+  - condition: state
+    entity_id: device_tracker.hein_mobile_wifi
+    state: 'not_home'
+  - condition: state
+    entity_id: device_tracker.anneke_mobile_wifi
+    state: 'not_home'
+  - condition: time
+    after: '16:00'
+    before: '21:59'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.socket_livingroom_window
+# Rule: Rule away Light off in the evening
+- id: '2012197900002'
+  alias: Rule away Light off in the evening
+  trigger:
+  - platform: state
+    entity_id: device_tracker.hein_mobile_wifi
+    to: 'not_home'
+  - platform: state
+    entity_id: device_tracker.anneke_mobile_wifi
+    to: 'not_home'
+  - platform: time
+    at: '22:08:00'
+  condition:
+  - condition: state
+    entity_id: device_tracker.hein_mobile_wifi
+    state: 'not_home'
+  - condition: state
+    entity_id: device_tracker.anneke_mobile_wifi
+    state: 'not_home'
+  - condition: time
+    after: '22:00'
+    before: '23:59'
+  - condition: state
+    entity_id: switch.fibaro_livingroom_back_switch
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.socket_livingroom_window
+# Rule: Rule RFXremote button 1 on
+- id: '2018012900101'
+  alias: Rule RFXremote button 1 on
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data: {"entity_id": "switch.switch_remote_b1", "state": "on"}
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.socket_livingroom_window
+# Rule: Rule RFXremote button 1 off
+- id: '2018012900102'
+  alias: Rule RFXremote button 1 off
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data: {"entity_id": "switch.switch_remote_b1", "state": "off"}
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.socket_livingroom_window
+# Rule: Rule RFXremote button 2 on
+- id: '2018012900201'
+  alias: Rule RFXremote button 2 on
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data: {"entity_id": "switch.switch_remote_b2", "state": "on"}
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.socket_livingroom_cabinet
+# Rule: Rule RFXremote button 2 off
+- id: '2018012900202'
+  alias: Rule RFXremote button 2 off
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data: {"entity_id": "switch.switch_remote_b2", "state": "off"}
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.socket_livingroom_cabinet
+# Rule: Rule RFXremote button 3 on
+- id: '2018012900301'
+  alias: Rule RFXremote button 3 on
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data: {"entity_id": "switch.switch_remote_b3", "state": "on"}
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.fibaro_livingroom_front_switch
+# Rule: Rule RFXremote button 3 off
+- id: '2018012900302'
+  alias: Rule RFXremote button 3 off
+  trigger:
+    - platform: event
+      event_type: button_pressed
+      event_data: {"entity_id": "switch.switch_remote_b3", "state": "off"}
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.fibaro_livingroom_front_switch
+# Rule: Rule Carport Lights on
+- id: '2018197900001'
+  alias: Rule Carport Lights on
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 00:00:00
+  condition:
+  - condition: time
+    after: '16:00'
+    before: '23:59'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.fibaro_carport_spots_switch
+# Rule: Rule Carports Lights off
+- id: '2018197900002'
+  alias: Rule Carports Lights off
+  trigger:
+  - platform: time
+    at: '00:30'
+  condition:
+  - condition: time
+    after: '23:59'
+    before: '07:59'
+  - condition: state
+    entity_id: switch.fibaro_livingroom_back_switch
+    state: 'off'
+  - condition: state
+    entity_id: switch.fibaro_livingroom_front_switch
+    state: 'off'
+  - condition: state
+    entity_id: switch.socket_livingroom_window
+    state: 'off'
+  - condition: state
+    entity_id: switch.socket_livingroom_cabinet
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.fibaro_carport_spots_switch
+# Rule: Weekly Backup
+- id: '2019040500001'
+  alias: Weekly Backup Friday at 1 AM
+  initial_state: 'on'
+  trigger:
+  - platform: time
+    at: '01:00:00'
+  condition:
+  - condition: time
+    weekday:
+    - fri
+  action:
+  - service: hassio.snapshot_full
+    data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+#  - service: notify.sms_notification
+#    data_template:
+#      message: Creating backup named "Automated Backup {{ now().strftime('%Y-%m-%d') }}"
+# Rule: Weekly Backup to Google
+- id: '2019040500002'
+  alias: Weekly Backup to Google Friday at 1:30 AM
+  initial_state: 'on'
+  trigger:
+  - platform: time
+    at: '01:30:00'
+  condition:
+  - condition: time
+    weekday:
+    - fri
+  action:
+  - service: rest_command.google_backup

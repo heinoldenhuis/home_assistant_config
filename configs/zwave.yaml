@@ -1,0 +1,2 @@
+# ZWave setup
+usb_path: !secret device_path_zwave

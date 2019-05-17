@@ -1,0 +1,4 @@
+# MQTT Setup (Hassio Mosquitto MQTT broker Add-on).
+broker: core-mosquitto
+username: !secret mqtt_username
+password: !secret mqtt_password

@@ -1,0 +1,1 @@
+"""The Philips TV integration."""

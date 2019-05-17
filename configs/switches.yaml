@@ -1,0 +1,29 @@
+# MQTT Switch for livingroom window lights
+- platform: mqtt
+  name: socket_livingroom_window
+  state_topic: "/powersocket1/relay/state"
+  command_topic: "/powersocket1/gpio/5"
+  payload_on: "1"
+  payload_off: "0"
+  qos: 1
+  retain: true
+
+# MQTT Switch for livingroom cabinet light
+- platform: mqtt
+  name: socket_livingroom_cabinet
+  state_topic: "/powersocket2/relay/state"
+  command_topic: "/powersocket2/gpio/5"
+  payload_on: "1"
+  payload_off: "0"
+  qos: 1
+  retain: true
+
+# MQTT Switch for shed garden
+- platform: mqtt
+  name: socket_shed_garden
+  state_topic: "/powersocket3/relay/state"
+  command_topic: "/powersocket3/gpio/12"
+  payload_on: "1"
+  payload_off: "0"
+  qos: 1
+  retain: true

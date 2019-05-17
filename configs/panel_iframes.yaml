@@ -1,0 +1,5 @@
+# Cloud9 IDE panel for editing config files.
+ide:
+  title: IDE
+  icon: mdi:code-braces
+  url: !secret link_ide

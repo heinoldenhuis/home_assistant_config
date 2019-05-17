@@ -1,0 +1,8 @@
+# UBus from Openwrt.
+- platform: ubus
+  host: !secret tracker_openwrt_host
+  username: !secret tracker_openwrt_username
+  password: !secret tracker_openwrt_password
+  track_new_devices: no
+  interval_seconds: 15
+  consider_home: 200

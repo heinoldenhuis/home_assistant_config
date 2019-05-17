@@ -1,0 +1,55 @@
+# Proximity for monitoring the proximity of devices to a particular zone and the direction of travel.
+
+# Home Hein
+home_hein:
+  zone: home
+  ignored_zones:
+    - work_anneke_place1
+    - work_anneke_place2
+    - work_hein
+  devices:
+    - device_tracker.hein_mobile
+  tolerance: 50
+
+# Home Anneke
+home_anneke:
+  zone: home
+  ignored_zones:
+    - work_anneke_place1
+    - work_anneke_place2
+    - work_hein
+  devices:
+    - device_tracker.anneke_nokia
+  tolerance: 50
+
+# Work Hein
+work_hein:
+  zone: work_hein
+  ignored_zones:
+    - home
+    - work_anneke_place1
+    - work_anneke_place2
+  devices:
+    - device_tracker.hein_mobile
+  tolerance: 50
+
+# Work Anneke
+work_anneke_place1:
+  zone: work_anneke_place1
+  ignored_zones:
+    - home
+    - work_hein
+    - work_anneke_place2
+  devices:
+    - device_tracker.anneke_nokia
+  tolerance: 50
+
+work_anneke_place2:
+  zone: work_anneke_place2
+  ignored_zones:
+    - home
+    - work_hein
+    - work_anneke_place1
+  devices:
+    - device_tracker.anneke_nokia
+  tolerance: 50

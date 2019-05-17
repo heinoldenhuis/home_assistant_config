@@ -1,0 +1,21 @@
+# Rest command for Philips TV Remote control
+philipstv_send_key:
+  url: 'http://10.79.80.211:1925/1/input/key'
+  method: POST
+  payload: '{"key": "{{key}}"}'
+  timeout: 5
+  content_type: 'application/json'
+
+cable_receiver_send_key:
+  url: 'http://10.79.80.125/api/remotecontrol?command={{command}}'
+  method: POST
+  timeout: 5
+  content_type: 'text/html'
+
+google_backup:
+  url: 'http://localhost:8055/gb/doBackup'
+  timeout: '300'
+
+google_backup_adhoc:
+  url: 'http://localhost:8055/gb/adhocBackup'
+  timeout: '300'

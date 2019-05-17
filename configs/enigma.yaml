@@ -1,0 +1,9 @@
+# Enigma configuration for cable received.
+devices:
+  - host: !secret media_cable_host
+    port: !secret media_cable_port
+    name: cable_receiver
+    timeout: 20
+    username: !secret media_cable_username
+    password: !secret media_cable_password
+    picon: picon

@@ -1,0 +1,21 @@
+# Weather precipitation radar.
+- platform: generic
+  name: weather_precipitation_radar
+  still_image_url: http://cdn.knmi.nl/knmi/map/page/weer/actueel-weer/neerslagradar/WWWRADAR_loop.gif
+
+# Weather meteogram.
+- platform: generic
+  name: weather_meteogram
+  still_image_url: !secret weather_meteogram_url
+  content_type: "image/svg+xml"
+
+# NVR cameras.
+- platform: generic
+  name: carport_overcap
+  still_image_url: !secret camera_nvr_carport_overcap_link  
+- platform: generic
+  name: garden
+  still_image_url: !secret camera_nvr_garden_link
+- platform: generic
+  name: shed_overcap
+  still_image_url: !secret camera_nvr_shed_overcap_link

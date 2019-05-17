@@ -1,0 +1,259 @@
+# DARKBLUE THEME
+# --------------
+darkblue:
+  primary-color: "#396FB6"
+  light-primary-color: "#77a0d4"
+  dark-primary-color: "#3539ce"
+  text-primary-color: "#ffffff"
+  primary-background-color: "#37464f"
+  sidebar-text_-_background: "#3c4348"
+  paper-card-background-color: "#263137"
+  paper-card-header-color: "var(--text-primary-color)"
+  secondary-background-color: "var(--primary-background-color)"
+  primary-text-color: "var(--text-primary-color)"
+  secondary-text-color: "var(--primary-color)"
+  paper-listbox-background-color: "var(--sidebar-text_-_background)"
+  paper-toggle-button-checked-ink-color: "var(--dark-primary-color)"
+  paper-toggle-button-checked-button-color: "var(--dark-primary-color)"
+  paper-toggle-button-checked-bar-color: "var(--dark-primary-color)"
+  paper-slider-knob-color: "var(--primary-color)"
+  paper-slider-knob-start-color: "var(--primary-color)"
+  paper-slider-pin-color: "var(--primary-color)"
+  paper-slider-active-color: "var(--primary-color)"
+  paper-slider-secondary-color: "var(--light-primary-color)"
+  paper-slider-container-color: "var(--sidebar-text_-_background)"
+  paper-progress-secondary-color: "var(--sidebar-text_-_background)"
+  paper-item-selected_-_background-color: "var(--primary-color)"
+  paper-item-icon_-_color: "var(--text-primary-color)"
+  paper-item-icon-color: "var(--sidebar-text_-_background)"
+  paper-item-icon-active-color: "var(--primary-color)"
+  paper-grey-50: "var(--sidebar-text_-_background)"
+  paper-grey-200: "var(--primary-background-color)"
+  label-badge-background-color: "var(--sidebar-text_-_background)"
+  label-badge-text-color: "var(--text-primary-color)"
+  label-badge-red: "var(--primary-color)"
+  label-badge-blue: "var(--light-primary-color)"
+  label-badge-green: "var(--dark-primary-color)"
+  label-badge-yellow: "var(--text-primary-color)"
+  label-badge-grey: "var(--paper-grey-500)"
+  table-row-background-color: "var(--paper-card-background-color)"
+  table-row-alternative-background-color: "var(--sidebar-text_-_background)"
+
+# DARKCYAN THEME
+# --------------
+darkcyan:
+  # Text colors
+  primary-text-color: "#cfcfcf" # "#9b9b9b"
+  secondary-text-color: "#04a7bc"
+  text-primary-color: "#ffffff"
+  disabled-text-color: "#919191"
+  # Main Interface colors
+  primary-color: "#00bcd4"
+  dark-primary-color: "#0288d1"
+  light-primary-color: "#00bcd4" # "#b3e5fC"
+  accent-color: "#ff9800"
+  #divider-color: "rgba(255, 255, 255, 0.12)"
+  divider-color: "var(--primary-color)"
+  # States and Badges colors
+  state-icon-color: "#d3d3d3"
+  state-icon-active-color: "var(--primary-text-color)" # "var(--primary-color)"
+  state-icon-unavailable-color: "var(--disabled-text-color)"
+  # Background and Sidebar colors
+  card-background-color: "#202020"
+  primary-background-color: "#303030"
+  secondary-background-color: "#2b2b2b"
+  # Sidebar Menu colors
+  sidebar-text-color: "var(--primary-text-color)"
+  sidebar-background-color: "var(--paper-listbox-background-color)"
+  sidebar-icon-color: "#d3d3d3"
+  sidebar-selected-text-color: "var(--primary-color)"
+  sidebar-selected-icon-color: "var(--primary-color)"
+  # Controls colors
+  toggle-button-color: "var(--dark-primary-color)"
+  #toggle-button-unchecked-color: "var(--primary-text-color)"
+  slider-color: "var(--primary-color)"
+  slider-secondary-color: "var(--light-primary-color)"
+  slider-bar-color: "var(--disabled-text-color)"
+  # Label-Badge colors
+  label-badge-background-color: "var(--secondary-background-color)"
+  label-badge-text-color: "var(--text-primary-color)"
+  label-badge-red: "#DF4C1E"
+  label-badge-blue: "#039be5"
+  label-badge-green: "#0DA035"
+  label-badge-yellow: "#f4b400"
+  label-badge-grey: "var(--paper-grey-500)"
+  # Paper Styles colors
+  paper-grey-50: "var(--primary-text-color)"
+  paper-grey-200: "#3d3d3d" # "#191919"
+  paper-grey-500: "#848484" # "#9e9e9e"
+  # Paper-Spinner colors
+  google-red-500: "#db4437"
+  google-blue-500: "#4285f4"
+  google-green-500: "#0f9d58"
+  google-yellow-500: "#f4b400"
+  # Paper-Slider colors
+  paper-green-400: "#66bb6a"
+  paper-blue-400: "#42a5f5"
+  paper-orange-400: "#ffa726"
+  # Opacity for dark text on a light background
+  dark-divider-opacity: "0.12"
+  dark-disabled-opacity: "0.38"
+  dark-secondary-opacity: "0.54"
+  dark-primary-opacity: "0.87"
+  # Opacity for light text on a dark background
+  light-divider-opacity: "0.12"
+  light-disabled-opacity: "0.3"
+  light-secondary-opacity: "0.7"
+  light-primary-opacity: "1.0"
+  #TODO:
+  paper-card-background-color: "#4e4e4e"
+  paper-item-icon-color: "#d3d3d3"
+  paper-listbox-background-color: "#202020"
+  paper-listbox-color: "#FFFFFF"      
+  paper-card-header-color: "#var(--paper-item-icon-color)"
+  paper-item-icon-active-color: "var(--primary-color)"
+  paper-item-icon_-_color: "var(--primary-text-color)"
+  paper-slider-active-color: "var(--primary-color)"
+  paper-slider-knob-color: "var(--primary-color)"
+  paper-slider-knob-start-color: "var(--primary-color)"
+  paper-slider-pin-color: "var(--primary-color)"
+  paper-slider-secondary-color: "var(--light-primary-color)"
+  paper-toggle-button-checked-ink-color: "var(--dark-primary-color)"
+  paper-toggle-button-checked-button-color: "var(--primary-color)"
+  paper-toggle-button-checked-bar-color: "var(--light-primary-color)"
+  paper-toggle-button-unchecked-bar-color: "var(--primary-text-color)"
+  heat-color: "#0288d1"
+
+# DARKORANGE THEME
+# ----------------
+darkorange:
+  primary-color: "#ff9800"
+  light-primary-color: "#ffc947"
+  dark-primary-color: "#c66900"
+  text-primary-color: "#ffffff"
+  primary-background-color: "#37464f"
+  sidebar-text_-_background: "#62717b"
+  paper-card-background-color: "#263137"
+  paper-card-header-color: "var(--text-primary-color)"
+  secondary-background-color: "var(--primary-background-color)"
+  primary-text-color: "var(--text-primary-color)"
+  secondary-text-color: "var(--primary-color)"
+  paper-listbox-background-color: "var(--sidebar-text_-_background)"
+  paper-toggle-button-checked-ink-color: "var(--dark-primary-color)"
+  paper-toggle-button-checked-button-color: "var(--dark-primary-color)"
+  paper-toggle-button-checked-bar-color: "var(--dark-primary-color)"
+  paper-slider-knob-color: "var(--primary-color)"
+  paper-slider-knob-start-color: "var(--primary-color)"
+  paper-slider-pin-color: "var(--primary-color)"
+  paper-slider-active-color: "var(--primary-color)"
+  paper-slider-secondary-color: "var(--light-primary-color)"
+  paper-slider-container-color: "var(--sidebar-text_-_background)"
+  paper-progress-secondary-color: "var(--sidebar-text_-_background)"
+  paper-item-selected_-_background-color: "var(--primary-color)"
+  paper-item-icon_-_color: "var(--text-primary-color)"
+  paper-item-icon-color: "var(--sidebar-text_-_background)"
+  paper-item-icon-active-color: "var(--primary-color)"
+  paper-grey-50: "var(--sidebar-text_-_background)"
+  paper-grey-200: "var(--primary-background-color)"
+  label-badge-background-color: "var(--sidebar-text_-_background)"
+  label-badge-text-color: "var(--text-primary-color)"
+  label-badge-red: "var(--primary-color)"
+  label-badge-blue: "var(--light-primary-color)"
+  label-badge-green: "var(--dark-primary-color)"
+  label-badge-yellow: "var(--text-primary-color)"
+  label-badge-grey: "var(--paper-grey-500)"
+  table-row-background-color: "var(--paper-card-background-color)"
+  table-row-alternative-background-color: "var(--sidebar-text_-_background)"
+
+# MIDNIGHT THEME
+# --------------
+midnight:
+# Main colors
+  primary-color: '#5294E2'                                                        # Header
+  accent-color: '#E45E65'                                                         # Accent color
+  dark-primary-color: 'var(--accent-color)'                                       # Hyperlinks
+  light-primary-color: 'var(--accent-color)'                                      # Horizontal line in about
+# Text colors
+  primary-text-color: '#FFFFFF'                                                   # Primary text colour, here is referencing dark-primary-color
+  text-primary-color: 'var(--primary-text-color)'                                 # Primary text colour
+  secondary-text-color: '#5294E2'                                                 # For secondary titles in more info boxes etc.
+  disabled-text-color: '#7F848E'                                                  # Disabled text colour
+  label-badge-border-color: 'green'                                               # Label badge border, just a reference value
+# Background colors
+  primary-background-color: '#383C45'                                             # Settings background
+  secondary-background-color: '#383C45'                                           # Main card UI background
+  divider-color: 'rgba(0, 0, 0, .12)'                                             # Divider
+# Table rows
+  table-row-background-color: '#353840'                                           # Table row
+  table-row-alternative-background-color: '#3E424B'                               # Table row alternative
+# Nav Menu
+  paper-listbox-color: 'var(--primary-color)'                                     # Navigation menu selection hoover
+  paper-listbox-background-color: '#2E333A'                                       # Navigation menu background
+  paper-grey-50: 'var(--primary-text-color)'                                   
+  paper-grey-200: '#414A59'                                                       # Navigation menu selection
+# Paper card
+  paper-card-header-color: 'var(--accent-color)'                                  # Card header text colour
+  paper-card-background-color: '#434954'                                          # Card background colour
+  paper-dialog-background-color: '#434954'                                        # Card dialog background colour
+  paper-item-icon-color: 'var(--primary-text-color)'                              # Icon color
+  paper-item-icon-active-color: '#F9C536'                                         # Icon color active
+  paper-item-icon_-_color: 'green'           
+  paper-item-selected_-_background-color: '#434954'                               # Popup item select                      
+  paper-tabs-selection-bar-color: 'green'
+# Labels
+  label-badge-red: 'var(--accent-color)'                                          # References the brand colour label badge border
+  label-badge-text-color: 'var(--primary-text-color)'                             # Now same as label badge border but that's a matter of taste
+  label-badge-background-color: '#2E333A'                                         # Same, but can also be set to transparent here
+# Switches
+  paper-toggle-button-checked-button-color: 'var(--accent-color)'
+  paper-toggle-button-checked-bar-color: 'var(--accent-color)'
+  paper-toggle-button-checked-ink-color: 'var(--accent-color)'
+  paper-toggle-button-unchecked-button-color: 'var(--disabled-text-color)'
+  paper-toggle-button-unchecked-bar-color: 'var(--disabled-text-color)'
+  paper-toggle-button-unchecked-ink-color: 'var(--disabled-text-color)'  
+# Sliders
+  paper-slider-knob-color: 'var(--accent-color)'
+  paper-slider-knob-start-color: 'var(--accent-color)'
+  paper-slider-pin-color: 'var(--accent-color)'
+  paper-slider-active-color: 'var(--accent-color)'
+  paper-slider-container-color: 'linear-gradient(var(--primary-background-color), var(--secondary-background-color)) no-repeat'
+  paper-slider-secondary-color: 'var(--secondary-background-color)'
+  paper-slider-disabled-active-color: 'var(--disabled-text-color)'
+  paper-slider-disabled-secondary-color: 'var(--disabled-text-color)'
+# Google colors
+  google-red-500: '#E45E65'
+  google-green-500: '#39E949'
+
+night:
+  # Main Stuff #
+  primary-color: "#0179d8" # Primary (most of the UI)
+  primary-background-color: "#060606" # Primary background colour (dialogs, e.t.c)
+  secondary-background-color: "#060606" # Secondary background colour (main UI background)
+  paper-card-background-color: "#131313" # Card background colour
+  paper-item-icon-color: "#0179d8" # Icon colour
+  primary-text-color: "#FFFFFF" # Primary text colour
+  secondary-text-color: "rgba(255, 255, 255, 0.5)" # Secondary text colour
+  disabled-text-color: "rgba(255, 255, 255, 0.5)" # Disabled text colour
+  divider-color: "rgba(255, 255, 255, 0.12)" # Divider colour
+  paper-card-header-color: "#FFFFFF" # Card header text colour
+
+  # Nav Menu #
+  paper-listbox-background-color: "#131313" # Listbox background colour
+  paper-listbox-color: "#FFFFFF" # Listbox text colour
+  paper-grey-200: "#060606" # Listbox selected item background colour
+
+  # Switches #
+  paper-toggle-button-checked-ink-color: "#d80129"
+  paper-toggle-button-checked-button-color: "#0179d8"
+  paper-toggle-button-checked-bar-color: "#FFFFFF"
+
+  # Sliders #
+  paper-slider-knob-color: "#0179d8"
+  paper-slider-knob-start-color: "#0179d8"
+  paper-slider-pin-color: "#0179d8"
+  paper-slider-active-color: "#0179d8"
+  paper-slider-secondary-color: "#0179d8"
+
+  # Tables #
+  table-row-background-color: transparant
+  table-row-alternative-background-color: transparant

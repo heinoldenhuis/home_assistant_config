@@ -1,0 +1,30 @@
+sun.sun:
+  friendly_name: Zon
+sensor.weather_temperature:
+  friendly_name: Buiten Temperatuur
+sensor.weather_humidity:
+  friendly_name: Buiten Vochtigheid
+  icon: mdi:water-percent
+sensor.weather_visibility:
+  friendly_name: Buiten Zicht
+  icon: mdi:weather-fog
+sensor.weather_precipitation:
+  friendly_name: Buiten Neerslag
+  icon: mdi:weather-pouring
+sensor.weather_precipitation_forecast_average:
+  friendly_name: Buiten Neerslag verwachting
+sensor.weather_pressure:
+  friendly_name: Buiten Druk
+  icon: mdi:gauge
+sensor.weather_wind_direction:
+  friendly_name: Buiten Wind richting
+  icon: mdi:weather-windy
+sensor.weather_wind_speed:
+  friendly_name: Buiten Wind snelheid
+  icon: mdi:weather-windy
+camera.weather_precipitation_radar:
+  friendly_name: Neerslag radar
+  icon: mdi:weather-pouring
+camera.weather_meteogram:
+  friendly_name: Meteogram
+  icon: mdi:weather-pouring

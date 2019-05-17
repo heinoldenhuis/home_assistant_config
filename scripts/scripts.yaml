@@ -1,4 +1,4 @@
-# Currently no scripts
+# Scripts used for sending commands to a device.
 philipstv_press_button:
   sequence:
     service: rest_command.philipstv_send_key

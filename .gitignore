@@ -26,5 +26,5 @@
 customize.yaml
 known_devices.yaml
 secrets.yaml
-scripts.yaml
 !scripts/scripts.yaml
+scripts.yaml
